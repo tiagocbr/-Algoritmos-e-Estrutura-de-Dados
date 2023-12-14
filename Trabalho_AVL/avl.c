@@ -179,24 +179,28 @@ NO* no_remover(NO* A,elem chave,bool *removido){
         *removido = true;
         if(A->esq==NULL){
             if(A->dir==NULL){ //Caso em que o nó a ser removido é uma folha
+                item_apagar(&(A->valor));
                 free(A);
                 return NULL;
             }
             else{ //Caso em que o nó a ser removido so tem o filho direito
-                A->valor=A->dir->valor;
+                item_apagar(&(A->valor));
+                A->valor=item_criar(item_get_chave(A->dir->valor));
                 A->dir = no_remover(A->dir,item_get_chave(A->dir->valor),removido);
             }
         }
         else{
             if(A->dir==NULL){ //Caso em que o  nó a ser removido so tem o filho esquerdo
-                A->valor=A->esq->valor;
+                item_apagar(&(A->valor));
+                A->valor=item_criar(item_get_chave(A->esq->valor));
                 A->esq = no_remover(A->esq,item_get_chave(A->esq->valor),removido);
             }
             else{  //Caso em que o nó a ser removido tem filhos esquerdo e direito 
 
                 //O nó B é o maior nó da sub-árvore da esquerda, o Valor do nó A assumirá o valor do nó B, que será removido depois;
                 NO* B = maior_valor(A->esq); 
-                A->valor= B->valor; 
+                item_apagar(&(A->valor));
+                A->valor= item_criar(item_get_chave(B->valor)); 
                 A->esq = no_remover(A->esq,item_get_chave(B->valor),removido); 
 
             }
