@@ -217,12 +217,12 @@ NO* no_remover(NO* A,elem chave,bool *removido){
     A->altura=altura_no(A);
     A->FB=altura_no(A->esq) - altura_no(A->dir);
     if(A->FB>1){
-        if(A->esq->FB<0)A=rotacao_ED(A);
-        else A=rotacao_DD(A);
+        if(A->esq->FB<0)return rotacao_ED(A);
+        else return rotacao_DD(A);
     }
     if(A->FB<-1){
-        if(A->dir->FB>0)A=rotacao_DE(A);
-        else A=rotacao_EE(A);
+        if(A->dir->FB>0)return rotacao_DE(A);
+        else return rotacao_EE(A);
     }
 
     return A;
