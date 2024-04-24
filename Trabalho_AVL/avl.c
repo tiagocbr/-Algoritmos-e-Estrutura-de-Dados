@@ -117,14 +117,12 @@ NO *rotacao_DD(NO* desb){
 
 NO *rotacao_ED(NO* desb){
     desb->esq=rotacao_EE(desb->esq);              
-    desb=rotacao_DD(desb);
-    return desb;
+    return (rotacao_DD(desb));
 }
 
 NO* rotacao_DE(NO* desb){
     desb->dir=rotacao_DD(desb->dir);
-    desb=rotacao_EE(desb);
-    return desb;
+    return(rotacao_EE(desb));
 }
 
 //Função para inserir um nó na sub-árvore do nó A ,preservando sua estrutura e forma
