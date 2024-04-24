@@ -183,15 +183,17 @@ NO* no_remover(NO* A,elem chave,bool *removido){
             }
             else{ //Caso em que o nó a ser removido so tem o filho direito
                 item_apagar(&(A->valor));
-                A->valor=item_criar(item_get_chave(A->dir->valor));
-                A->dir = no_remover(A->dir,item_get_chave(A->dir->valor),removido);
+		NO* resp = A->dir;
+		free(A);
+		return resp;
             }
         }
         else{
             if(A->dir==NULL){ //Caso em que o  nó a ser removido so tem o filho esquerdo
                 item_apagar(&(A->valor));
-                A->valor=item_criar(item_get_chave(A->esq->valor));
-                A->esq = no_remover(A->esq,item_get_chave(A->esq->valor),removido);
+		NO* resp =  A->esq;
+		free(A);
+		return resp;
             }
             else{  //Caso em que o nó a ser removido tem filhos esquerdo e direito 
 
