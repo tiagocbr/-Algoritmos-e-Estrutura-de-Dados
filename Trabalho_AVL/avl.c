@@ -144,12 +144,12 @@ NO* inserir_no(NO *A, elem chave, bool *inserido){
     A->FB=altura_no(A->esq) - altura_no(A->dir);
 
     if(A->FB>1){
-        if(A->esq->FB<0)A=rotacao_ED(A); //Caso em que o nó A está com FB=2 e o filho possui FB = -1
-        else A=rotacao_DD(A);  //Caso em que o nó A tem FB=2 e o filho tem FB>=0
+        if(A->esq->FB<0)return rotacao_ED(A); //Caso em que o nó A está com FB=2 e o filho possui FB = -1
+        else return rotacao_DD(A);  //Caso em que o nó A tem FB=2 e o filho tem FB>=0
     }
     if(A->FB<-1){
-        if(A->dir->FB>0)A=rotacao_DE(A); //Caso em que o nó A está com FB=-2 e o filho possui FB=1
-        else A=rotacao_EE(A);  //Caso em que o nó A possui FB=-2 e o filho possui FB<=0
+        if(A->dir->FB>0)return rotacao_DE(A); //Caso em que o nó A está com FB=-2 e o filho possui FB=1
+        else return rotacao_EE(A);  //Caso em que o nó A possui FB=-2 e o filho possui FB<=0
     }
     return A;
 }
